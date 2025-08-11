@@ -64,10 +64,12 @@ fun BMIHistoryScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Column {
+                            val weightUnit = if (record.unit == "kg/cm") "kg" else "lb"
+                            val heightUnit = if (record.unit == "kg/cm") "cm" else "in"
                             Text("BMI: %.2f".format(record.bmi), color = resultColor)
                             Text("Category: ${record.category}", color = resultColor)
-                            Text("Weight: ${record.weight} ${record.unit}")
-                            Text("Height: ${record.height} ${if (record.unit == "kg/cm") "cm" else "in"}")
+                            Text("Weight: ${record.weight} $weightUnit")
+                            Text("Height: ${record.height} $heightUnit")
                         }
                         Button(onClick = { viewModel.delete(record) }) {
                             Text("Delete")

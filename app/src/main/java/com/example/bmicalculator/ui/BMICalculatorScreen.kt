@@ -56,6 +56,28 @@ fun BMICalculatorScreen(
 
             UnitSwitchRow(unit = unit, onToggle = viewModel::onUnitToggle)
 
+            val onCalculateAndMaybeSave: () -> Unit = {
+                keyboardController?.hide()
+                viewModel.calculateBMI()
+                val state = viewModel.bmiState.value
+                if (state is BMIState.Success) {
+                    val w = weight.toDoubleOrNull()
+                    val h = height.toDoubleOrNull()
+                    if (w != null && h != null) {
+                        val unitLabel = if (unit == BMIViewModel.UnitType.METRIC) "kg/cm" else "lb/in"
+                        onSaveResult(
+                            BMIRecord(
+                                bmi = state.bmi,
+                                category = state.category,
+                                weight = w,
+                                height = h,
+                                unit = unitLabel
+                            )
+                        )
+                    }
+                }
+            }
+
             if (isLandscape) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -67,10 +89,7 @@ fun BMICalculatorScreen(
                         unit = unit,
                         onWeightChange = viewModel::onWeightChange,
                         onHeightChange = viewModel::onHeightChange,
-                        onCalculate = {
-                            keyboardController?.hide()
-                            viewModel.calculateBMI()
-                        },
+                        onCalculate = onCalculateAndMaybeSave,
                         modifier = Modifier.weight(1f)
                     )
 
@@ -79,8 +98,7 @@ fun BMICalculatorScreen(
                         weight = weight,
                         height = height,
                         unit = unit,
-                        modifier = Modifier.weight(1f),
-                        onSaveResult = onSaveResult
+                        modifier = Modifier.weight(1f)
                     )
                 }
             } else {
@@ -90,18 +108,14 @@ fun BMICalculatorScreen(
                     unit = unit,
                     onWeightChange = viewModel::onWeightChange,
                     onHeightChange = viewModel::onHeightChange,
-                    onCalculate = {
-                        keyboardController?.hide()
-                        viewModel.calculateBMI()
-                    }
+                    onCalculate = onCalculateAndMaybeSave
                 )
 
                 ResultSection(
                     bmiState = bmiState,
                     weight = weight,
                     height = height,
-                    unit = unit,
-                    onSaveResult = onSaveResult
+                    unit = unit
                 )
             }
         }
@@ -161,11 +175,8 @@ fun ResultSection(
     weight: String,
     height: String,
     unit: BMIViewModel.UnitType,
-    onSaveResult: (BMIRecord) -> Unit = {},
     modifier: Modifier = Modifier
 ) {
-    var lastSavedKey by remember { mutableStateOf<String?>(null) }
-
     Column(
         modifier = modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -173,26 +184,6 @@ fun ResultSection(
     ) {
         when (bmiState) {
             is BMIState.Success -> {
-                val weightVal = weight.toDoubleOrNull()
-                val heightVal = height.toDoubleOrNull()
-                val unitLabel = if (unit == BMIViewModel.UnitType.METRIC) "kg/cm" else "lb/in"
-                val currentKey = "${bmiState.bmi}-${weight}-${height}-${unitLabel}"
-
-                LaunchedEffect(currentKey) {
-                    if (weightVal != null && heightVal != null && lastSavedKey != currentKey) {
-                        onSaveResult(
-                            BMIRecord(
-                                bmi = bmiState.bmi,
-                                category = bmiState.category,
-                                weight = weightVal,
-                                height = heightVal,
-                                unit = unitLabel
-                            )
-                        )
-                        lastSavedKey = currentKey
-                    }
-                }
-
                 BMIResultCard(bmi = bmiState.bmi, category = bmiState.category)
             }
             is BMIState.Error -> {
