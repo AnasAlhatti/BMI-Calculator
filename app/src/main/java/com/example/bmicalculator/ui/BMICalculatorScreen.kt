@@ -14,6 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.bmicalculator.model.BMIRecord
 import com.example.bmicalculator.model.BMIState
 import com.example.bmicalculator.ui.components.BMIResultCard
@@ -22,8 +23,8 @@ import com.example.bmicalculator.viewmodel.BMIViewModel
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 fun BMICalculatorScreen(
-    viewModel: BMIViewModel = androidx.lifecycle.viewmodel.compose.viewModel(),
     modifier: Modifier = Modifier,
+    viewModel: BMIViewModel = viewModel(),
     onHistoryClick: () -> Unit = {},
     onSaveResult: (BMIRecord) -> Unit = {}
 ) {
@@ -95,9 +96,6 @@ fun BMICalculatorScreen(
 
                     ResultSection(
                         bmiState = bmiState,
-                        weight = weight,
-                        height = height,
-                        unit = unit,
                         modifier = Modifier.weight(1f)
                     )
                 }
@@ -113,9 +111,6 @@ fun BMICalculatorScreen(
 
                 ResultSection(
                     bmiState = bmiState,
-                    weight = weight,
-                    height = height,
-                    unit = unit
                 )
             }
         }
@@ -172,9 +167,6 @@ fun InputForm(
 @Composable
 fun ResultSection(
     bmiState: BMIState,
-    weight: String,
-    height: String,
-    unit: BMIViewModel.UnitType,
     modifier: Modifier = Modifier
 ) {
     Column(

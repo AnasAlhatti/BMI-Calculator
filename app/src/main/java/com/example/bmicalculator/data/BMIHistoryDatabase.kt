@@ -34,7 +34,6 @@ abstract class BMIHistoryDatabase : RoomDatabase() {
                     "bmi_history_db"
                 )
                     .addMigrations(MIGRATION_1_2)
-                    // .fallbackToDestructiveMigration() // dev-only convenience
                     .build()
                 INSTANCE = instance
                 instance
