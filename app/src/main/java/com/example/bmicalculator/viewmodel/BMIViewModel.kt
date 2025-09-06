@@ -37,14 +37,14 @@ class BMIViewModel : ViewModel() {
                 }
                 UnitType.IMPERIAL -> {
                     // height in inches, weight in pounds
-                    703 * weight / (height * height)
+                    703.0 * weight / (height * height)
                 }
             }
 
             val category = when {
                 bmi < 18.5 -> "Underweight"
-                bmi < 24.9 -> "Normal"
-                bmi < 29.9 -> "Overweight"
+                bmi <= 24.9 -> "Normal"
+                bmi <= 29.9 -> "Overweight"
                 else -> "Obese"
             }
 
