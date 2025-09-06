@@ -15,7 +15,7 @@ This project is part of my student portfolio to practice modern Android developm
 ---
 
 ## 📸 Screenshots
-<img src="screenshots/Home.png" width="250"> <img src="screenshots/History.png" width="250">
+<img src="screenshots/Home.jpg" width="250"> <img src="screenshots/History.jpg" width="250">
 
 ---
 
