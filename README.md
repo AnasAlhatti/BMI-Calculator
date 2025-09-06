@@ -15,8 +15,7 @@ This project is part of my student portfolio to practice modern Android developm
 ---
 
 ## 📸 Screenshots
-*(Add your screenshots here – e.g., `/screenshots/` folder in the repo)*  
-<img src="screenshots/home.png" width="250"> <img src="screenshots/history.png" width="250">
+<img src="screenshots/Home.png" width="250"> <img src="screenshots/History.png" width="250">
 
 ---
 
