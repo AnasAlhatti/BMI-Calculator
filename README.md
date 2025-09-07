@@ -25,7 +25,7 @@ This project is part of my student portfolio to practice modern Android developm
 2. Open the project in Android Studio (latest version recommended).
 3. Build & run the app on an emulator or a physical Android device.
 
-🛠 Tech Stack
+## 🛠 Tech Stack
 Language: Kotlin
 UI Framework: Jetpack Compose
 Architecture: Simple state management with Compose
