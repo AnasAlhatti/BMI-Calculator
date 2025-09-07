@@ -26,12 +26,12 @@ This project is part of my student portfolio to practice modern Android developm
 3. Build & run the app on an emulator or a physical Android device.
 
 ## 🛠 Tech Stack
-Language: Kotlin
-UI Framework: Jetpack Compose
-Architecture: Simple state management with Compose
-IDE: Android Studio
+- Language: Kotlin
+- UI Framework: Jetpack Compose
+- Architecture: Simple state management with Compose
+- IDE: Android Studio
 
-📂 Project Structure
+## 📂 Project Structure
 ```
 app/
  ├─ data/           # BMI history storage
