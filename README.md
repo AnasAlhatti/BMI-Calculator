@@ -15,34 +15,31 @@ This project is part of my student portfolio to practice modern Android developm
 ---
 
 ## 📸 Screenshots
-*(Add your screenshots here – e.g., `/screenshots/` folder in the repo)*  
-<img src="screenshots/home.png" width="250"> <img src="screenshots/history.png" width="250">
+<img src="screenshots/Home.jpg" width="250"> <img src="screenshots/History.jpg" width="250">
 
 ---
 
 ## 🚀 How to Run
 1. Clone this repository:
-   ```bash
-   git clone https://github.com/your-username/bmi-calculator.git
+   git clone https://github.com/AnasAlhatti/BMI-Calculator.git
 2. Open the project in Android Studio (latest version recommended).
 3. Build & run the app on an emulator or a physical Android device.
 
-🛠 Tech Stack
-Language: Kotlin
-UI Framework: Jetpack Compose
-Architecture: Simple state management with Compose
-IDE: Android Studio
+## 🛠 Tech Stack
+- Language: Kotlin
+- UI Framework: Jetpack Compose
+- Architecture: Simple state management with Compose
+- IDE: Android Studio
 
-📂 Project Structure
-bash
-Copy code
+## 📂 Project Structure
+```
 app/
  ├─ data/           # BMI history storage
  ├─ ui/             # Jetpack Compose screens
  ├─ utils/          # Unit conversions, helpers
  └─ MainActivity.kt # App entry point
-👤 Author
-Anas Alhatti
+```
+👤 Author Anas Alhatti
 GitHub: @AnasAlhatti
 
 📜 License
