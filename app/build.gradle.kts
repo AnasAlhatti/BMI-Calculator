@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.bmicalculator"
+    namespace = "com.Anas.bmicalculator"
     compileSdk = 36
 
     defaultConfig {
